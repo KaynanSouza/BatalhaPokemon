@@ -1,44 +1,39 @@
-﻿
-using System.Security.Cryptography.X509Certificates;
-using PokemonSegundoTeste;
-
-namespace PokemonSegundoTeste
+namespace PokemonSegundoTeste.Models
 {
-    internal class DadosPokemons
+    internal class Pokemon
     {
-        public double Vida, Velocidade, Defesa, Forca;
-        public string Nome, Tipo;
+        public string Nome { get; private set; }
+        public string Tipo { get; private set; }
+        public double Vida { get; set; }
+        public double Velocidade { get; private set; }
+        public double Defesa { get; private set; }
+        public double Forca { get; private set; }
 
-        public void Bulbasaur()
+        public Pokemon(string nome, string tipo, double vida, double velocidade, double defesa, double forca)
         {
-            Nome = "Bulbasaur";
-            Tipo = "grama";
-            Vida = 90;
-            Forca = 49;
-            Defesa = 49;
-            Velocidade = 45;
+            Nome = nome;
+            Tipo = tipo;
+            Vida = vida;
+            Velocidade = velocidade;
+            Defesa = defesa;
+            Forca = forca;
         }
 
-        public void Charmander()
+        public static List<Pokemon> ObterPokemonsDisponiveis()
         {
-            Nome = "Charmander";
-            Tipo = "fogo";
-            Vida = 78;
-            Forca = 52;
-            Defesa = 43;
-            Velocidade = 65;
+            return new List<Pokemon>
+            {
+                new Pokemon("Bulbasaur", "grama", 90, 45, 49, 49),
+                new Pokemon("Charmander", "fogo", 78, 65, 43, 52),
+                new Pokemon("Squirtle", "agua", 88, 43, 65, 48),
+                new Pokemon("Pikachu", "eletrico", 100, 90, 40, 55),
+                new Pokemon("Eevee", "normal", 95, 55, 50, 50),
+                new Pokemon("Jigglypuff", "normal", 115, 20, 20, 45),
+                new Pokemon("Growlithe", "fogo", 110, 60, 45, 70),
+                new Pokemon("Poliwag", "agua", 100, 90, 40, 50),
+                new Pokemon("Abra", "psiquico", 80, 105, 20, 40),
+                new Pokemon("Machop", "lutador", 120, 45, 50, 85)
+            };
         }
-
-        public void Squirtle()
-        {
-            Nome = "Squirtle";
-            Tipo = "agua";
-            Vida = 88;
-            Forca = 48;
-            Defesa = 65;
-            Velocidade = 43;
-        }
-
-        
     }
 }
