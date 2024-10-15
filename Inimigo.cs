@@ -1,242 +1,64 @@
-﻿using System;
-using PokemonSegundoTeste;
-
-namespace PokemonSegundoTeste
+namespace PokemonSegundoTeste.Models
 {
     internal class Inimigo
     {
-        public string Nome, Tipo;
-        public double Vida, Velocidade, Defesa, Forca;
+        public string Nome { get; private set; }
+        public string Tipo { get; private set; }
+        public double Vida { get; set; }
+        public double Velocidade { get; private set; }
+        public double Defesa { get; private set; }
+        public double Forca { get; private set; }
 
-        public void EscolhaInimigo()
+        private static readonly List<Inimigo> inimigosDisponiveis = new List<Inimigo>
+        {
+            new Inimigo("Sanshrew", "terra", 200, 40, 85, 75),
+            new Inimigo("Vilpix", "fogo", 200, 65, 40, 41),
+            new Inimigo("Jigglypuff", "normal", 115, 20, 20, 45),
+            new Inimigo("Bulbasaur", "grama", 200, 45, 49, 45),
+            new Inimigo("Charmander", "fogo", 200, 60, 43, 52),
+            new Inimigo("Squirtle", "agua", 200, 43, 65, 48),
+            new Inimigo("Caterpie", "inseto", 200, 20, 55, 20),
+            new Inimigo("Metapod", "inseto", 200, 55, 30, 20),
+            new Inimigo("Weedle", "inseto", 200, 35, 30, 35),
+            new Inimigo("Kakuna", "inseto", 200, 35, 50, 25),
+            new Inimigo("Pidgey", "normal", 200, 56, 40, 45),
+            new Inimigo("Rattata", "normal", 200, 72, 35, 56),
+            new Inimigo("Pikachu", "eletrico", 200, 90, 40, 55),
+            new Inimigo("Oddish", "grama", 200, 30, 55, 50),
+            new Inimigo("Seel", "agua", 200, 45, 55, 45),
+            new Inimigo("Geodude", "pedra", 200, 20, 100, 80),
+            new Inimigo("Ponyta", "fogo", 200, 90, 55, 85),
+            new Inimigo("Slowpoke", "agua", 200, 15, 65, 65),
+            new Inimigo("Voltorb", "eletrico", 200, 100, 50, 30),
+            new Inimigo("Lapras", "agua", 130, 60, 80, 85),
+            new Inimigo("Mankey", "lutador", 180, 70, 35, 80),
+            new Inimigo("Growlithe", "fogo", 200, 60, 45, 70),
+            new Inimigo("Poliwag", "agua", 160, 90, 40, 50),
+            new Inimigo("Abra", "psiquico", 150, 105, 20, 40),
+            new Inimigo("Machop", "lutador", 210, 45, 50, 85),
+            new Inimigo("Bellsprout", "grama", 190, 50, 35, 75),
+            new Inimigo("Tentacool", "agua", 200, 70, 60, 50),
+            new Inimigo("Magnemite", "eletrico", 170, 45, 95, 60),
+            new Inimigo("Doduo", "normal", 180, 110, 45, 85),
+            new Inimigo("Grimer", "veneno", 220, 25, 80, 65),
+            new Inimigo("Shellder", "agua", 150, 40, 100, 65)
+        };
+
+        private Inimigo(string nome, string tipo, double vida, double velocidade, double defesa, double forca)
+        {
+            Nome = nome;
+            Tipo = tipo;
+            Vida = vida;
+            Velocidade = velocidade;
+            Defesa = defesa;
+            Forca = forca;
+        }
+
+        public static Inimigo CriarInimigoAleatorio()
         {
             Random rand = new Random();
-
-            int numero = rand.Next(1, 20 + 1);
-
-            switch (numero)
-            {
-                case 1:
-                    
-                    Nome = "Sanshrew";
-                    Tipo = "terra";
-                    Vida = 200;
-                    Forca = 75;
-                    Defesa = 85;
-                    Velocidade = 40;
-                    
-                    break;
-
-                case 2:
-
-                    Nome = "Vilpix";
-                    Tipo = "fogo";
-                    Vida = 200;
-                    Forca = 41;
-                    Defesa = 40;
-                    Velocidade = 65;
-
-                    break;
-
-                case 3:
-
-                    Nome = "Jigglypuff";
-                    Tipo = "normal";
-                    Vida = 115;
-                    Forca = 45;
-                    Defesa = 20;
-                    Velocidade = 20;
-
-                    break;
-
-                case 4:
-
-                    Nome = "Bulbasaur";
-                    Tipo = "grama";
-                    Vida = 200;
-                    Forca = 45;
-                    Defesa = 49;
-                    Velocidade = 45;
-
-                    break;
-
-                case 5:
-
-                    Nome = "Charmander";
-                    Tipo = "fogo";
-                    Vida = 200;
-                    Forca = 52;
-                    Defesa = 43;
-                    Velocidade = 60;
-
-                    break;
-
-                case 6:
-
-                    Nome = "Squirtle";
-                    Tipo = "agua";
-                    Vida = 200;
-                    Forca = 48;
-                    Defesa = 65;
-                    Velocidade = 43;
-
-                    break;
-
-                case 7:
-
-                    Nome = "Caterpie";
-                    Tipo = "inseto";
-                    Vida = 200;
-                    Forca = 20;
-                    Defesa = 55;
-                    Velocidade = 20;
-
-                    break;
-
-                case 8:
-
-                    Nome = "Metapod";
-                    Tipo = "inseto";
-                    Vida = 200;
-                    Forca = 20;
-                    Defesa = 30;
-                    Velocidade = 55;
-
-                    break;
-
-                case 9:
-
-                    Nome = "Weedle";
-                    Tipo = "inseto";
-                    Vida = 200;
-                    Forca = 35;
-                    Defesa = 30;
-                    Velocidade = 35;
-
-                    break;
-
-                case 10:
-
-                    Nome = "Kakuna";
-                    Tipo = "inseto";
-                    Vida = 200;
-                    Forca = 25;
-                    Defesa = 50;
-                    Velocidade = 35;
-
-                    break;
-
-                case 11:
-
-                    Nome = "Pidgey";
-                    Tipo = "normal";
-                    Vida = 200;
-                    Forca = 45;
-                    Defesa = 40;
-                    Velocidade = 56;
-
-                    break;
-
-                case 12:
-
-                    Nome = "Rattata";
-                    Tipo = "normal";
-                    Vida = 200;
-                    Forca = 56;
-                    Defesa = 35;
-                    Velocidade = 72;
-
-                    break;
-
-                case 13:
-
-                    Nome = "Pikachu";
-                    Tipo = "eletrico";
-                    Vida = 200;
-                    Forca = 55;
-                    Defesa = 40;
-                    Velocidade = 90;
-
-                    break;
-
-                case 14:
-
-                    Nome = "Oddish";
-                    Tipo = "grama";
-                    Vida = 200;
-                    Forca = 50;
-                    Defesa = 55;
-                    Velocidade = 30;
-
-                    break;
-
-                case 15:
-
-                    Nome = "Seel";
-                    Tipo = "agua";
-                    Vida = 200;
-                    Forca = 45;
-                    Defesa = 55;
-                    Velocidade = 45;
-
-                    break;
-
-                case 16:
-
-                    Nome = "Geodude";
-                    Tipo = "pedra";
-                    Vida = 200;
-                    Forca = 80;
-                    Defesa = 100;
-                    Velocidade = 20;
-
-                    break;
-
-                case 17:
-
-                    Nome = "Ponyta";
-                    Tipo = "fogo";
-                    Vida = 200;
-                    Forca = 85;
-                    Defesa = 55;
-                    Velocidade = 90;
-
-                    break;
-
-                case 18:
-
-                    Nome = "Slowpoke";
-                    Tipo = "agua";
-                    Vida = 200;
-                    Forca = 65;
-                    Defesa = 65;
-                    Velocidade = 15;
-
-                    break;
-
-                case 19:
-
-                    Nome = "Voltorb";
-                    Tipo = "eletrico";
-                    Vida = 200;
-                    Forca = 30;
-                    Defesa = 50;
-                    Velocidade = 100;
-
-                    break;
-
-                case 20:
-
-                    Nome = "Lapras";
-                    Tipo = "agua";
-                    Vida = 130;
-                    Forca = 85;
-                    Defesa = 80;
-                    Velocidade = 60;
-
-                    break;
-            }
-
+            int index = rand.Next(inimigosDisponiveis.Count);
+            return inimigosDisponiveis[index];
         }
     }
 }
